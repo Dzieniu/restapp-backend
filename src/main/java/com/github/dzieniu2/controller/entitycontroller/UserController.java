@@ -19,8 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("users")
 public class UserController {
 
     @Autowired
@@ -29,19 +28,15 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private static final Logger USER_CONTROLLER = LoggerFactory.getLogger(UserController.class);
-
     @GetMapping
     public List<User> getAllUsers(){
 
-        USER_CONTROLLER.info("Get request for all users");
         return userService.getAll();
     }
 
     @GetMapping(value = "/{id}")
     public User getUser(@PathVariable Long id) throws Exception{
 
-        USER_CONTROLLER.info("Get request for user with id: {}",id);
         checkIfNotFound(id);
         return userService.getById(id);
     }
@@ -50,7 +45,6 @@ public class UserController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public void addUser(@Valid @RequestBody UserDto userDto, BindingResult bindingResult){
 
-        USER_CONTROLLER.info("Post user request with data: {}", userDto);
         checkIfAlreadyExists(userDto.getEmail());
         checkBindingResult(bindingResult);
 
@@ -65,7 +59,6 @@ public class UserController {
     @PutMapping(value = "/{id}")
     public void updateUser(@PathVariable long id, @Valid @RequestBody UserDto userDto, BindingResult bindingResult){
 
-        USER_CONTROLLER.info("Put user request with data:{}", userDto);
         checkIfNotFound(id);
         checkBindingResult(bindingResult);
 
@@ -75,7 +68,6 @@ public class UserController {
     @DeleteMapping(value = "/{id}")
     public void deleteUser(@PathVariable Long id){
 
-        USER_CONTROLLER.info("Delete user request with id:{}",id);
         checkIfNotFound(id);
 
         userService.removeById(id);

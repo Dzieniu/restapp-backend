@@ -3,7 +3,11 @@ package com.github.dzieniu2.service;
 import com.github.dzieniu2.entity.Student;
 import com.github.dzieniu2.entity.dto.StudentDto;
 import com.github.dzieniu2.repository.StudentRepository;
+import com.github.dzieniu2.repository.specifications.StudentSpecificationBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +24,11 @@ public class StudentService {
 
     public List<Student> getAll(){
         return studentRepository.findAll();
+    }
+
+    public Page<Student> getAll(String searchCriteria, Pageable pageable){
+        Specification<Student> spec = new StudentSpecificationBuilder().buildSpecification(searchCriteria);
+        return studentRepository.findAll(spec, pageable);
     }
 
     public Student getById(Long id){

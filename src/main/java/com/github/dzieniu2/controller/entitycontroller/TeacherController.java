@@ -24,8 +24,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("teacher")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("teachers")
 public class TeacherController {
 
     @Autowired
@@ -33,8 +32,6 @@ public class TeacherController {
 
     @Autowired
     private UserService userService;
-
-    private static final Logger USER_CONTROLLER = LoggerFactory.getLogger(TeacherController.class);
 
     @GetMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")

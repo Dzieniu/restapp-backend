@@ -1,14 +1,14 @@
 package com.github.dzieniu2.entity.dto;
 
 import lombok.Getter;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
-@ToString
+@Setter
 public class StudentDto {
 
     @NotNull

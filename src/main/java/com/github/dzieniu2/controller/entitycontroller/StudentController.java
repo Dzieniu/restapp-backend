@@ -5,12 +5,18 @@ import com.github.dzieniu2.entity.User;
 import com.github.dzieniu2.entity.dto.StudentDto;
 import com.github.dzieniu2.exception.student.StudentBindingException;
 import com.github.dzieniu2.exception.student.StudentNotFoundException;
+import com.github.dzieniu2.repository.specifications.StudentSpecificationBuilder;
 import com.github.dzieniu2.security.MyUserDetails;
 import com.github.dzieniu2.service.StudentService;
 import com.github.dzieniu2.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,10 +28,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
-@RequestMapping("student")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("students")
 public class StudentController {
 
     @Autowired
@@ -34,12 +41,13 @@ public class StudentController {
     @Autowired
     private UserService userService;
 
-    private static final Logger STUDENT_CONTROLLER = LoggerFactory.getLogger(SubjectController.class);
-
     @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')")
-    public List<Student> getAll(){
-        return studentService.getAll();
+    public Page<Student> getAll(
+            @RequestParam(value = "search", required = false) String searchCriteria,
+            @PageableDefault(size = 15, direction = Sort.Direction.ASC, sort = "id", value = 30) Pageable pageable
+    ){
+        return studentService.getAll(searchCriteria, pageable);
     }
 
     @GetMapping(value = "/{id}")

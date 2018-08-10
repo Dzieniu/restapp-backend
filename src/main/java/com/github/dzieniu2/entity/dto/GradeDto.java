@@ -1,14 +1,14 @@
 package com.github.dzieniu2.entity.dto;
 
 import lombok.Getter;
-import lombok.ToString;
+import lombok.Setter;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
-@ToString
+@Setter
 public class GradeDto {
 
     @NotNull
@@ -22,4 +22,5 @@ public class GradeDto {
     @NotNull
     @Min(1)
     private long subject_id;
+
 }

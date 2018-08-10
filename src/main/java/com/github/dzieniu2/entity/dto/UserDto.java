@@ -2,15 +2,14 @@ package com.github.dzieniu2.entity.dto;
 
 import com.github.dzieniu2.validation.ValidRole;
 import lombok.Getter;
-import lombok.ToString;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
-@ToString
+@Setter
 public class UserDto {
 
     @NotNull

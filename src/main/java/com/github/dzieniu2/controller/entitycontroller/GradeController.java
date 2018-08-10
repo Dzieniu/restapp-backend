@@ -9,8 +9,6 @@ import com.github.dzieniu2.security.MyUserDetails;
 import com.github.dzieniu2.service.GradeService;
 import com.github.dzieniu2.service.StudentService;
 import com.github.dzieniu2.service.SubjectService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -25,8 +23,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("grade")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("grades")
 public class GradeController {
 
     @Autowired
@@ -37,8 +34,6 @@ public class GradeController {
 
     @Autowired
     private SubjectService subjectService;
-
-    private static final Logger GRADE_CONTROLLER = LoggerFactory.getLogger(GradeController.class);
 
     @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')")

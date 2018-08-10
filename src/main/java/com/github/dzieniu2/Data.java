@@ -33,7 +33,7 @@ public class Data implements CommandLineRunner{
     public void run(String... strings) throws Exception {
 
         User admin = new User();
-        admin.setEmail("admin@gmail.com");
+        admin.setEmail("admin");
         admin.setPassword(encoder.encode("admin"));
         admin.setRole(Role.ROLE_ADMIN);
         this.userService.insert(admin);
