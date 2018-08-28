@@ -1,4 +1,4 @@
-package com.github.dzieniu2.controller.entitycontroller;
+package com.github.dzieniu2.controller;
 
 import com.github.dzieniu2.entity.User;
 import com.github.dzieniu2.entity.dto.UserDto;
@@ -7,8 +7,6 @@ import com.github.dzieniu2.exception.user.UserBindingException;
 import com.github.dzieniu2.exception.user.UserNotFoundException;
 import com.github.dzieniu2.security.Role;
 import com.github.dzieniu2.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public User getUser(@PathVariable Long id) throws Exception{
+    public User getUser(@PathVariable Long id) {
 
         checkIfNotFound(id);
         return userService.getById(id);

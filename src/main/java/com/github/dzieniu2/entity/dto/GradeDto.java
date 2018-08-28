@@ -1,6 +1,8 @@
 package com.github.dzieniu2.entity.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.Min;
@@ -9,6 +11,8 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class GradeDto {
 
     @NotNull
@@ -22,5 +26,4 @@ public class GradeDto {
     @NotNull
     @Min(1)
     private long subject_id;
-
 }

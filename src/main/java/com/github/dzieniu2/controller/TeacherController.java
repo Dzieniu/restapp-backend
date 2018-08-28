@@ -1,4 +1,4 @@
-package com.github.dzieniu2.controller.entitycontroller;
+package com.github.dzieniu2.controller;
 
 import com.github.dzieniu2.entity.Teacher;
 import com.github.dzieniu2.entity.User;
@@ -8,8 +8,6 @@ import com.github.dzieniu2.exception.teacher.TeacherNotFoundException;
 import com.github.dzieniu2.security.MyUserDetails;
 import com.github.dzieniu2.service.TeacherService;
 import com.github.dzieniu2.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;

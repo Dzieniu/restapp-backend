@@ -1,21 +1,17 @@
-package com.github.dzieniu2.controller.entitycontroller;
+package com.github.dzieniu2.controller;
 
 import com.github.dzieniu2.entity.Student;
 import com.github.dzieniu2.entity.User;
 import com.github.dzieniu2.entity.dto.StudentDto;
 import com.github.dzieniu2.exception.student.StudentBindingException;
 import com.github.dzieniu2.exception.student.StudentNotFoundException;
-import com.github.dzieniu2.repository.specifications.StudentSpecificationBuilder;
 import com.github.dzieniu2.security.MyUserDetails;
 import com.github.dzieniu2.service.StudentService;
 import com.github.dzieniu2.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -27,9 +23,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("students")

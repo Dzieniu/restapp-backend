@@ -1,4 +1,4 @@
-package com.github.dzieniu2.controller.entitycontroller;
+package com.github.dzieniu2.controller;
 
 import com.github.dzieniu2.exception.ErrorResponse;
 import com.github.dzieniu2.exception.NoSuchFieldException;

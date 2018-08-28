@@ -1,4 +1,4 @@
-package com.github.dzieniu2.controller.entitycontroller;
+package com.github.dzieniu2.controller;
 
 import com.github.dzieniu2.entity.Grade;
 import com.github.dzieniu2.entity.User;
